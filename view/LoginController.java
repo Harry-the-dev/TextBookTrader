@@ -88,7 +88,21 @@ public class LoginController {
             String password = this.txt_Password.getText();
             loginDA loginDA = new loginDA();
             User user = loginDA.AuthenticateUser(email, password);
-            SwitchToShop(event,user);
+
+            if(user==null)
+            {
+                err_login.setText("Invalid Login Details");
+                txt_Email.setText("");
+                txt_Password.setText("");
+            }
+            else{
+                this.err_login.setText("");
+                SwitchToShop(event,user);
+            }
+
+
+
+           
         
         }
 
